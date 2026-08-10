@@ -1,20 +1,38 @@
+
 import React from "react";
 import ProductCard from "./ProducCard";
 import { useAppContext } from "../context/AppContext";
 
 const BestSeller = () => {
-    const { products } = useAppContext()
+    const { products } = useAppContext();
+
     return (
-        <div className="mt-16">
-            <p className="text-2xl md:text-3xl font-medium">Best Sellers</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-6 lg:grid-cols-5 mt-6">
-                {products.filter((product) => product.inStock).slice(0, 5).map((product, index) =>
-                    (<ProductCard key={index} product={product} />)
-                )}
+        <section className="mt-10 sm:mt-14 md:mt-16 lg:mt-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
 
+            {/* Heading */}
+            <div className=" text-center mb-6 sm:mb-8 md:mb-10">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800">
+                    Best Sellers
+                </h2>
             </div>
-        </div>
-    )
-}
 
-export default BestSeller
+            {/* Products */}
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
+                {products
+                    ?.filter((product) => product.inStock)
+                    .slice(0, 5)
+                    .map((product, index) => (
+                        <ProductCard
+                            key={product._id || index}
+                            product={product}
+                        />
+                    ))}
+            </div>
+
+
+        </section>
+    );
+};
+
+export default BestSeller;
