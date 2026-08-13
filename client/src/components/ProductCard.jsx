@@ -9,11 +9,13 @@ const ProductCard = ({ product }) => {
         addToCart,
         removeFromCart,
         cartItems,
+        navigate,
     } = useAppContext();
 
     return (
         product && (
-            <div
+            <div onClick={() => { navigate(`/products/${product.category.toLowerCase()}/${product._id}`); scrollTo(0, 0) }
+            }
                 className="w-full border border-gray-500/20 rounded-md
         px-3 py-3 sm:px-4 bg-white
         hover:shadow-md transition-shadow duration-200"

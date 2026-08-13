@@ -20,7 +20,7 @@ const Categories = () => {
                         className="group cursor-pointer py-5 px-3 gap-2 rounded-lg flex flex-col justify-center items-center transition-transform duration-200 hover:scale-105"
                         style={{ backgroundColor: category.bgColor }}
                         onClick={() => {
-                            navigate(`/ products / ${category.path.toLowerCase()} `);
+                            navigate(`/products/${category.path.toLowerCase()} `);
                             scrollTo(0, 0);
                         }}
                     >
