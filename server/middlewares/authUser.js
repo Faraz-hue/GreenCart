@@ -11,14 +11,13 @@ const authUser = async (req, res, next) => {
     }
     try {
         const tokenDecode = jwt.verify(token, process.env.JWT_SECRET)
-        if (tokenDecode.id) {
+        if (tokenDecode.email) {
             req.body.userId = tokenDecode.id
         } else {
             res.json({
                 success: false, message: "Not Authorized"
             })
         }
-        next()
     } catch (error) {
         res.json({
             success: false, message: error.message

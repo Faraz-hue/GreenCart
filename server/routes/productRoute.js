@@ -4,7 +4,7 @@ import authSeller from "../middlewares/authSeller.js"
 import productController from "../controllers/productController.js"
 const productRouter = express.Router()
 
-productRouter.post("/add", upload.array(["images"]),
+productRouter.post("/add", upload.array("images"),
     authSeller, productController.addProduct)
 
 productRouter.get("/list", productController.productList)
