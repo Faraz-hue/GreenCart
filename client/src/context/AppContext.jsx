@@ -66,12 +66,20 @@ export const AppContextProvider = ({ children }) => {
     };
 
     const addToCart = (itemId) => {
+        if (!user) {
+            setShowUserLogin(true);
+            toast.error("Please login to add items to cart");
+            return;
+        }
+
         let cartData = structuredClone(cartItems);
+
         if (cartData[itemId]) {
             cartData[itemId] += 1;
         } else {
             cartData[itemId] = 1;
         }
+
         setCartItems(cartData);
         toast.success("Added to Cart");
     };
